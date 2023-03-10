@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     public GameObject player;
-    private float cameraX = 2.0f;
-    private float cameraY = 400.0f;
-    private float cameraZ = -400.0f;
+    public float cameraX = 2.0f;
+    public float cameraY = 400.0f;
+    public float cameraZ = -400.0f;
 
     // Start is called before the first frame update
     void Start()
