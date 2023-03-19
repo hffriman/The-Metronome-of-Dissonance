@@ -22,7 +22,6 @@ public class DetectPlayer : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().ChangeDirection(this.transform.rotation.z);
-            Debug.Log(this.transform.rotation.z);
         }
     }
 }

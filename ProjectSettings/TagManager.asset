@@ -8,6 +8,7 @@ TagManager:
   - ArrowSign
   - Checkpoint
   - Enemy
+  - FightStop
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - CrossroadsLayer
   - ArrowSignLayer
   - CheckpointLayer
-  - 
-  - 
+  - FightStop
+  - EnemyLayer
   - 
   - 
   - 
