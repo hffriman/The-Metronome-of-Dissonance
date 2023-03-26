@@ -7,10 +7,12 @@ public class Respawn : MonoBehaviour
 
     public GameObject playerObject;
 
+    private GameObject[] enemies;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     // Update is called once per frame
@@ -30,5 +32,12 @@ public class Respawn : MonoBehaviour
         yield return new WaitForSeconds(2);
         playerObject.transform.position = checkPointCoordinates;
         playerObject.SetActive(true);
+
+        foreach (GameObject enemy in enemies)
+        {
+            if (!enemy.activeSelf) {
+                enemy.SetActive(true);
+            }
+        }
     }
 }

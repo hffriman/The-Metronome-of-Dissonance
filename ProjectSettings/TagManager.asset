@@ -25,9 +25,9 @@ TagManager:
   - CheckpointLayer
   - FightStop
   - EnemyLayer
+  - PlayerLayer
   - 
-  - 
-  - 
+  - JumpLayer
   - 
   - 
   - 

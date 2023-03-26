@@ -40,11 +40,15 @@ public class FightStop : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-
             isOnFightStop = true;
-            GetComponent<BoxCollider>().enabled = false;
             other.gameObject.GetComponent<PlayerController>().StopPlayer();
             soundWeaponSelector.GetComponent<SoundFight>().CommenceSoundFight();
+
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<EnemyManager>().PrepareForEnemyAttack(other);
+            }
+
         }
     }
 
@@ -54,7 +58,7 @@ public class FightStop : MonoBehaviour
 
         for (int i = 0; i < enemies.Length; i++)
         {
-            if (enemies[i] == null)
+            if (!enemies[i].activeSelf)
             {
                 defeatedEnemies++;
             }
