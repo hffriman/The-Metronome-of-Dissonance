@@ -38,11 +38,14 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip jumpSound;
 
+    private GameObject metronome;
+
 
     // Start is called before the first frame update
     void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        metronome = GameObject.Find("Metronome");
     }
 
     // Update is called once per frame
@@ -65,6 +68,13 @@ public class PlayerController : MonoBehaviour
 
         // If the player has touched the crossroads, they can move left, right, or forward
         if (isOnCrossroads) {
+
+            if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) {
+                metronome.GetComponent<AudioSource>().mute = false;   
+            }
+            else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift)) {
+                metronome.GetComponent<AudioSource>().mute = true;
+            }
 
             if (Input.GetKeyDown("a") && notMoving) 
             {

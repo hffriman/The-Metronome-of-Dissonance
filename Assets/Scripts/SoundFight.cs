@@ -17,12 +17,16 @@ public class SoundFight : MonoBehaviour
 
     private bool isOnFightStop;
 
+    private bool readyToShoot;
+
     RaycastHit soundBeamHit;
 
     // Start is called before the first frame update
     void Start()
     {
         i = 0;
+
+        readyToShoot = true;
     }
 
     // Update is called once per frame
@@ -55,22 +59,27 @@ public class SoundFight : MonoBehaviour
                 soundWeaponSource.GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow)) 
+            if (readyToShoot)
             {
-                soundAttackSensors[0].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
-                Shoot(Vector3.forward, i);
-            } 
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                soundAttackSensors[1].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
-                Shoot(new Vector3(-1,0,0), i);
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                soundAttackSensors[2].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
-                Shoot(new Vector3(1,0,0), i);
+                if (Input.GetKeyDown(KeyCode.UpArrow)) 
+                {
+                    soundAttackSensors[0].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
+                    Shoot(Vector3.forward, i);
+                } 
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    soundAttackSensors[1].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
+                    Shoot(new Vector3(-1,0,0), i);
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    soundAttackSensors[2].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
+                    Shoot(new Vector3(1,0,0), i);
+                }
             }
         }
+
+        Debug.Log(readyToShoot);
     }
 
     void Shoot(Vector3 shootingDirection, int soundWeaponNumber)
@@ -80,16 +89,28 @@ public class SoundFight : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(shootingDirection), out soundBeamHit, Mathf.Infinity))
         {
-
             if (soundBeamHit.collider.tag == "Enemy" && soundBeamHit.collider.GetComponent<EnemyManager>().enemyAudio.name.ToString().Contains(soundWeaponNumber.ToString()))
             {
                 soundBeamHit.collider.GetComponent<EnemyManager>().EnemyDisappearance();
             }
-            else {
+            else 
+            {
                 Debug.Log("Not success");
             }
         }
+
+        StartCoroutine(WaitAfterShooting());
     }
+
+
+
+    public IEnumerator WaitAfterShooting()
+    {
+        readyToShoot = false;
+        yield return new WaitForSeconds(2);
+        readyToShoot = true;
+    }
+
 
    public void CommenceSoundFight()
    {

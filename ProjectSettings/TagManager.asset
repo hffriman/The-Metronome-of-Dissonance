@@ -9,6 +9,7 @@ TagManager:
   - Checkpoint
   - Enemy
   - FightStop
+  - Circle
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - PlayerLayer
   - 
   - JumpLayer
-  - 
+  - CircleLayer
   - 
   - 
   - 
