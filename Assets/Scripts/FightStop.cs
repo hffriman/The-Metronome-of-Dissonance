@@ -15,9 +15,12 @@ public class FightStop : MonoBehaviour
 
     private bool isOnFightStop;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         allDefeated = false;
         isOnFightStop = false;
     }
@@ -41,14 +44,16 @@ public class FightStop : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isOnFightStop = true;
-            other.gameObject.GetComponent<PlayerController>().StopPlayer();
-            soundWeaponSelector.GetComponent<SoundFight>().CommenceSoundFight();
+            checkFightingArea();
+        }
+    }
 
-            foreach (GameObject enemy in enemies)
-            {
-                enemy.GetComponent<EnemyManager>().PrepareForEnemyAttack(other);
-            }
-
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            isOnFightStop = false;
+            checkFightingArea();
         }
     }
 
@@ -67,6 +72,23 @@ public class FightStop : MonoBehaviour
         if (defeatedEnemies == enemies.Length)
         {
             allDefeated = true;
+        }
+    }
+
+    private void checkFightingArea() {
+        
+        if (isOnFightStop == true)
+        {
+            player.GetComponent<PlayerController>().StopPlayer();
+            soundWeaponSelector.GetComponent<SoundFight>().CommenceSoundFight(isOnFightStop);
+            foreach (GameObject enemy in enemies)
+            {
+                enemy.GetComponent<EnemyManager>().PrepareForEnemyAttack(player.GetComponent<CapsuleCollider>());
+            }
+        }
+        else 
+        {
+            soundWeaponSelector.GetComponent<SoundFight>().CommenceSoundFight(isOnFightStop);
         }
     }
 }

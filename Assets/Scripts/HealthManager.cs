@@ -28,8 +28,12 @@ public class HealthManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             playerObject.GetComponent<PlayerController>().PrepareForDisappearance();
-            currentHealth = maxHealth;
         }
+    }
+
+    public void RestoreHealth()
+    {
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(float damage)

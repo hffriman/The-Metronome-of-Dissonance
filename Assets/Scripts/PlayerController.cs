@@ -51,88 +51,91 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // Checks if the player has touched the Crossroads object
-        isOnCrossroads = Physics.CheckSphere(interactionCheck.position, 0.15f, CrossRoadsLayer);
-
-        // Checks if the player is on the ground
-        isOnGround = controller.isGrounded;
-
-
-        // Checks if the player is not moving
-        if (move == Vector3.zero) {
-            notMoving = true;
-        } else {
-            notMoving = false;
-        }
-
-        // If the player has touched the crossroads, they can move left, right, or forward
-        if (isOnCrossroads) {
-
-            if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) {
-                metronome.GetComponent<AudioSource>().mute = false;   
-            }
-            else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift)) {
-                metronome.GetComponent<AudioSource>().mute = true;
-            }
-
-            if (Input.GetKeyDown("a") && notMoving) 
-            {
-                move = new Vector3(-0.05f, 0, 0);
-            } 
-            else if (Input.GetKeyDown("d") && notMoving)
-            {
-                move = new Vector3(0.05f, 0, 0);
-            }
-            else if (Input.GetKeyDown("w") && notMoving) {
-                move = new Vector3(0, 0, 0.05f);
-            }
-        }
-
-        // Check the player's walking direction and play the Walking sound
-        // in the correct audio source
-
-        // Forward:
-        if (move != Vector3.zero && move.z > 0)
+        if (controller.enabled == true) 
         {
-            PlayWalkingSound(playerWalkSensors[0]);
-        }
-        else
-        {
-            StopWalkingSound(playerWalkSensors[0]);
-        }
 
-        // Left:
-        if (move != Vector3.zero && move.x < 0)
-        {
-            if (controller.isGrounded)
-            {
-                PlayJumpingSound(playerWalkSensors[1]);
+            // Checks if the player has touched the Crossroads object
+            isOnCrossroads = Physics.CheckSphere(interactionCheck.position, 0.15f, CrossRoadsLayer);
+
+            // Checks if the player is on the ground
+            isOnGround = controller.isGrounded;
+
+
+            // Checks if the player is not moving
+            if (move == Vector3.zero) {
+                notMoving = true;
+            } else {
+                notMoving = false;
             }
-            
+
+            // If the player has touched the crossroads, they can move left, right, or forward
+            if (isOnCrossroads) {
+
+                if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift)) {
+                    metronome.GetComponent<AudioSource>().mute = false;   
+                }
+                else if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift)) {
+                    metronome.GetComponent<AudioSource>().mute = true;
+                }
+
+                if (Input.GetKeyDown("a") && notMoving) 
+                {
+                    move = new Vector3(-0.05f, 0, 0);
+                } 
+                else if (Input.GetKeyDown("d") && notMoving)
+                {
+                    move = new Vector3(0.05f, 0, 0);
+                }
+                else if (Input.GetKeyDown("w") && notMoving) {
+                    move = new Vector3(0, 0, 0.05f);
+                }
+            }
+
+            // Check the player's walking direction and play the Walking sound
+            // in the correct audio source
+
+            // Forward:
+            if (move != Vector3.zero && move.z > 0)
+            {
+                PlayWalkingSound(playerWalkSensors[0]);
+            }
             else
             {
-                PlayWalkingSound(playerWalkSensors[1]);
+                StopWalkingSound(playerWalkSensors[0]);
             }
-        }
-        else 
-        {
-            StopWalkingSound(playerWalkSensors[1]);
-        }
 
-        // Right:
-        if (move != Vector3.zero && move.x > 0)
-        {
-            PlayWalkingSound(playerWalkSensors[2]);
-        }
-        else
-        {
-            StopWalkingSound(playerWalkSensors[2]);
-        }
+            // Left:
+            if (move != Vector3.zero && move.x < 0)
+            {
+                if (controller.isGrounded)
+                {
+                    PlayJumpingSound(playerWalkSensors[1]);
+                }
+                
+                else
+                {
+                    PlayWalkingSound(playerWalkSensors[1]);
+                }
+            }
+            else 
+            {
+                StopWalkingSound(playerWalkSensors[1]);
+            }
 
-        // Updates the movement per second
-        // <-- This is where the actual movement happens -->
-         controller.Move(move * Time.deltaTime * playerSpeed);
+            // Right:
+            if (move != Vector3.zero && move.x > 0)
+            {
+                PlayWalkingSound(playerWalkSensors[2]);
+            }
+            else
+            {
+                StopWalkingSound(playerWalkSensors[2]);
+            }
+
+            // Updates the movement per second
+            // <-- This is where the actual movement happens -->
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
     }
 
     public void ChangeDirection(float arrowRotation)
@@ -166,6 +169,11 @@ public class PlayerController : MonoBehaviour
     public void StopPlayer() 
     {
         move = new Vector3(0, 0, 0);
+    }
+
+    public void FlyAway()
+    {
+        move = new Vector3(0, 0.09f, 0);
     }
 
     public void ContinueMoving()

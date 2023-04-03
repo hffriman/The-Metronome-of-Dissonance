@@ -23,15 +23,22 @@ public class Respawn : MonoBehaviour
 
     public void Disappear(Vector3 checkPointCoordinates)
     {
-        playerObject.SetActive(false);
+
+        playerObject.GetComponent<MeshRenderer>().enabled = false;
         StartCoroutine(RespawnPlayer(checkPointCoordinates));
+        playerObject.GetComponent<PlayerController>().FlyAway();
     }
 
      IEnumerator RespawnPlayer(Vector3 checkPointCoordinates)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
+        playerObject.GetComponent<CharacterController>().enabled = false;
         playerObject.transform.position = checkPointCoordinates;
-        playerObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+
+        playerObject.GetComponent<HealthManager>().RestoreHealth();
+        playerObject.GetComponent<MeshRenderer>().enabled = true;
+        playerObject.GetComponent<CharacterController>().enabled = true;
 
         foreach (GameObject enemy in enemies)
         {

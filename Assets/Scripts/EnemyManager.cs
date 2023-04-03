@@ -11,6 +11,11 @@ public class EnemyManager : MonoBehaviour
 
     private float damage = 40.0f;
 
+    private LayerMask playerLayer;
+
+    private Transform playerDetector;
+
+    private bool playerInSight;
 
     public AudioClip enemyAudio;
 
@@ -19,14 +24,14 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerLayer = LayerMask.GetMask("PlayerLayer");
+        playerDetector = this.transform.GetChild(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
+        playerInSight = Physics.CheckSphere(playerDetector.position, 100.0f, playerLayer);
     }
 
    public void PrepareForEnemyAttack(Collider playerCollider)
@@ -36,11 +41,14 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator StartEnemyAttack(Collider playerCollider)
     {
-        while (playerCollider.gameObject.GetComponent<HealthManager>().currentHealth > 0.0f)
+        while (playerCollider.gameObject.GetComponent<HealthManager>().currentHealth > 0.0f && playerInSight == true)
         {
             yield return new WaitForSeconds(waitSeconds);
-            playerCollider.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
-            yield return new WaitForSeconds(coolDownSeconds);
+            if (playerInSight == true) 
+            {
+                playerCollider.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
+                yield return new WaitForSeconds(coolDownSeconds);
+            }
         }
     }
      

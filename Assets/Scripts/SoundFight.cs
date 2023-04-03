@@ -15,7 +15,7 @@ public class SoundFight : MonoBehaviour
 
     private int i;
 
-    private bool isOnFightStop;
+    private bool isAbleToFight;
 
     private bool readyToShoot;
 
@@ -32,7 +32,7 @@ public class SoundFight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOnFightStop) {
+        if (isAbleToFight) {
 
             if (Input.GetKeyDown("q"))
             {
@@ -78,8 +78,6 @@ public class SoundFight : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log(readyToShoot);
     }
 
     void Shoot(Vector3 shootingDirection, int soundWeaponNumber)
@@ -102,8 +100,6 @@ public class SoundFight : MonoBehaviour
         StartCoroutine(WaitAfterShooting());
     }
 
-
-
     public IEnumerator WaitAfterShooting()
     {
         readyToShoot = false;
@@ -112,16 +108,14 @@ public class SoundFight : MonoBehaviour
     }
 
 
-   public void CommenceSoundFight()
+   public void CommenceSoundFight(bool currentStatus)
    {
-      isOnFightStop = true;
+      isAbleToFight = currentStatus;
    }
 
    public void EndSoundFight()
    {
-      isOnFightStop = false;
+      isAbleToFight = false;
       playerObject.GetComponent<PlayerController>().ContinueMoving();
    }
-
-
 }
