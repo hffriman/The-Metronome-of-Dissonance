@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+public class DeathZone : MonoBehaviour
 {
 
     private float damage = 100.0f;

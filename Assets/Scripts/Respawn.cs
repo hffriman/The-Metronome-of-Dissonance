@@ -24,6 +24,7 @@ public class Respawn : MonoBehaviour
     public void Disappear(Vector3 checkPointCoordinates)
     {
 
+        playerObject.GetComponent<CapsuleCollider>().enabled = false;
         playerObject.GetComponent<MeshRenderer>().enabled = false;
         StartCoroutine(RespawnPlayer(checkPointCoordinates));
         playerObject.GetComponent<PlayerController>().FlyAway();
@@ -38,6 +39,7 @@ public class Respawn : MonoBehaviour
 
         playerObject.GetComponent<HealthManager>().RestoreHealth();
         playerObject.GetComponent<MeshRenderer>().enabled = true;
+        playerObject.GetComponent<CapsuleCollider>().enabled = true;
         playerObject.GetComponent<CharacterController>().enabled = true;
 
         foreach (GameObject enemy in enemies)

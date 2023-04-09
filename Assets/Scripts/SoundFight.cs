@@ -13,6 +13,8 @@ public class SoundFight : MonoBehaviour
 
     public AudioClip[] soundWeapons;
 
+    public AudioClip weaponBeam;
+
     private int i;
 
     private bool isAbleToFight;
@@ -24,7 +26,7 @@ public class SoundFight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        i = 0;
+        i = -1;
 
         readyToShoot = true;
     }
@@ -59,21 +61,21 @@ public class SoundFight : MonoBehaviour
                 soundWeaponSource.GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
             }
 
-            if (readyToShoot)
+            if (readyToShoot && i >= 0)
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow)) 
                 {
-                    soundAttackSensors[0].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
+                    soundAttackSensors[0].GetComponent<AudioSource>().PlayOneShot(weaponBeam, 1.0f);
                     Shoot(Vector3.forward, i);
                 } 
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    soundAttackSensors[1].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
+                    soundAttackSensors[1].GetComponent<AudioSource>().PlayOneShot(weaponBeam, 1.0f);
                     Shoot(new Vector3(-1,0,0), i);
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    soundAttackSensors[2].GetComponent<AudioSource>().PlayOneShot(soundWeapons[i], 1.0f);
+                    soundAttackSensors[2].GetComponent<AudioSource>().PlayOneShot(weaponBeam, 1.0f);
                     Shoot(new Vector3(1,0,0), i);
                 }
             }
@@ -87,9 +89,9 @@ public class SoundFight : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(shootingDirection), out soundBeamHit, Mathf.Infinity))
         {
-            if (soundBeamHit.collider.tag == "Enemy" && soundBeamHit.collider.GetComponent<EnemyManager>().enemyAudio.name.ToString().Contains(soundWeaponNumber.ToString()))
+            if (soundBeamHit.collider.tag == "Enemy" && soundBeamHit.collider.GetComponent<EnemyManager>().currentEnemyIdleSound.name.ToString().Contains(soundWeaponNumber.ToString()))
             {
-                soundBeamHit.collider.GetComponent<EnemyManager>().EnemyDisappearance();
+                soundBeamHit.collider.GetComponent<EnemyManager>().PrepareForEnemyDisappearance();
             }
             else 
             {

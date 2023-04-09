@@ -36,8 +36,6 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip walkingSound;
 
-    public AudioClip jumpSound;
-
     private GameObject metronome;
 
 

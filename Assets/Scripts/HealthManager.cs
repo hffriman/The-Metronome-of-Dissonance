@@ -8,6 +8,11 @@ public class HealthManager : MonoBehaviour
     public float maxHealth = 100.0f;
     public float currentHealth = 100.0f;
 
+    public AudioSource innerSoundSystem;
+
+    public AudioClip damageSound;
+    public AudioClip deathSound;
+
     public GameObject playerObject;
 
 
@@ -39,5 +44,15 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        if (currentHealth > 0) {
+            innerSoundSystem.PlayOneShot(damageSound);
+        } else {
+            innerSoundSystem.PlayOneShot(deathSound);
+        }
+
+        Debug.Log("Has taken damage");
+
+
     }
 }
