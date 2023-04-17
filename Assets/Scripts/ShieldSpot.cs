@@ -32,8 +32,15 @@ public class ShieldSpot : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Success");
             GetComponent<AudioSource>().PlayOneShot(beepSound);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            transform.parent.GetComponent<ShieldManager>().deactivateShield();
         }
     }
 }

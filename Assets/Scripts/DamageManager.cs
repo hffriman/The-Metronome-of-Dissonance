@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+    This script is only used for those enemy objects
+    that take all the damage from the player
+    (Example: Shadow areas in Stage 1)
+ */
+
 public class DamageManager : MonoBehaviour
 {
 

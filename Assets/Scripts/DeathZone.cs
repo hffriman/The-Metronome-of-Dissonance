@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/* 
+    This script has the same purpose as DamageManager,
+    but this one is dedicated to DeathZone areas of the game
+*/
+
 public class DeathZone : MonoBehaviour
 {
 

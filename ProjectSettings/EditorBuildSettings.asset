@@ -4,5 +4,41 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Notice.unity
+    guid: c4ceb00e04935c949b09a29831272685
+  - enabled: 1
+    path: Assets/Scenes/HenrySFriman.unity
+    guid: ff214c34133e33d4297dbf6e224e8eae
+  - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: 9ce22d65d749e8a43a1b31f16eacaf41
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: b13ff171ec493784494bc43f591684ba
+  - enabled: 1
+    path: Assets/Scenes/Opening.unity
+    guid: cd313b94985ddc84d8abe1d42dcc6ddb
+  - enabled: 1
+    path: Assets/Scenes/Tutorial-1.unity
+    guid: 09a2cf6b47d029643bff2acb8fd4181b
+  - enabled: 1
+    path: Assets/Scenes/Stage 1-1.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Tutorial-2.unity
+    guid: e4f75617e6fa3ee49a70bd14f0977219
+  - enabled: 1
+    path: Assets/Scenes/Stage 1-2.unity
+    guid: 26ad58a951579ed48a97be8846fade5f
+  - enabled: 1
+    path: Assets/Scenes/Closing.unity
+    guid: 58fb8c285e4fa374db61a95e7416abb7
+  - enabled: 1
+    path: Assets/Scenes/ThankYou.unity
+    guid: c002a9394918fef4aab024add8fe0f36
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: c37fd19a09dd69740b2050bce6f25e36
   m_configObjects: {}

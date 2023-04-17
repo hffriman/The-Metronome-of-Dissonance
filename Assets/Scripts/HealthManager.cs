@@ -44,7 +44,7 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-
+        
         if (currentHealth > 0) {
             innerSoundSystem.PlayOneShot(damageSound);
         } else {

@@ -11,8 +11,6 @@ public class ShieldManager : MonoBehaviour
     
     public AudioClip shieldSound;
 
-    private AudioSource playerAudioSource;
-
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +18,6 @@ public class ShieldManager : MonoBehaviour
         
         shieldSpot = transform.GetChild(0).gameObject;
         shadow = transform.GetChild(1).gameObject;
-        playerAudioSource = GameObject.Find("Player").gameObject.transform.GetChild(0).gameObject.GetComponent<AudioSource>();
         ableToShield = false;
     }
 
@@ -30,7 +27,7 @@ public class ShieldManager : MonoBehaviour
         if (ableToShield && Input.GetKeyDown(KeyCode.Space))
         {
             shadow.GetComponent<BoxCollider>().enabled = false;
-            playerAudioSource.PlayOneShot(shieldSound, 0.5f);
+            shadow.GetComponent<AudioSource>().PlayOneShot(shieldSound, 0.5f);
             StartCoroutine(ShadowReset());
         }
     }
@@ -38,10 +35,9 @@ public class ShieldManager : MonoBehaviour
     public IEnumerator ShadowReset() {
 
         yield return new WaitForSeconds(1.75f);
-        playerAudioSource.Stop();
+        shadow.GetComponent<AudioSource>().Stop();
         shadow.GetComponent<BoxCollider>().enabled = true;
         deactivateShield();
-        Debug.Log(shadow.name + " activated");
     }
 
 

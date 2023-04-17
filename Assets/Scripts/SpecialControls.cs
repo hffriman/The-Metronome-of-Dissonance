@@ -56,7 +56,8 @@ public class SpecialControls : MonoBehaviour
         isOnBridge = true;
     }
 
-    public void ContinueSpinning() {
+    public void ContinueSpinning() 
+    {
         isOnBridge = false;
         isOnCircle = true;
     }
@@ -65,6 +66,13 @@ public class SpecialControls : MonoBehaviour
     {
         isReversed = !isReversed;
         isOnCircle = !isOnCircle;
+    }
+
+    public void StopSpinning()
+    {
+        isOnCircle = false;
+        isReversed = false;
+        isOnBridge = false;
     }
 }
 

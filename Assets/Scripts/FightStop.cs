@@ -35,6 +35,7 @@ public class FightStop : MonoBehaviour
             {
                 soundWeaponSelector.GetComponent<SoundFight>().EndSoundFight();
                 isOnFightStop = false;
+                player.GetComponent<HealthManager>().RestoreHealth();
             }
         }
     }
