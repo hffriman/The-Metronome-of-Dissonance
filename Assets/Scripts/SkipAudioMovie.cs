@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// This script is used in the Audio Movies, where the player
+// can skip some audio movies (tutorials and credits) by pressing the Enter key
 public class SkipAudioMovie : MonoBehaviour
 {
     // Start is called before the first frame update

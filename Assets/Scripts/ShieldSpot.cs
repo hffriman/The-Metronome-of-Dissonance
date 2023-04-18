@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 
+    - This script is used in the "ShieldSpot & Shadow" prefabs Shadow object (in Stage 1)
+    - Whenever the player activates/exits this Shadow object's trigger, the ShieldManager's
+      ableToShield boolean will become true/false
+    - Also, the ShieldSpot's alarm sound (beepSound) will play once the player triggers the Shadow object
+*/
 public class ShieldSpot : MonoBehaviour
 {
 

@@ -4,13 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+// This script is used in the title sequences of the game (Notice, HenrySFriman presents, Startscreen)
+// Its main idea is to fade in/out black screen after certain seconds (delaySeconds)
+// In the middle of fade in/out, the current scene's UI is shown, and its audio is activated
+// Idea in a nutshell: 
+//    1. The black screen disappears slowly,
+//    2. The current scene's UI is shown (Notice, HenrySFriman presents or Startscreen)
+//    3. The UI's audio source is activated (delaySeconds is used to measure the audio clip's length)
+//    4. After the audio clip, the black screen appears again in a couple of seconds 
+//    5. The scene is changed
 public class TitleCardFader : MonoBehaviour
 {
 
+    // DelaySeconds should be as long as the title card's audio clip's length
     public float delaySeconds;
+
+    // BlackScreen is used in fade in/out transitions
     public Image blackScreen;
 
+    // Used to check if the scene should begin or end
     private bool fading;
+    
+    // ActivationCounter and DeactivationCounter
+    // are used to make sure that the audio clips
+    // will play only once
     private int activationCounter;
     private int deactivationCounter;
 
@@ -25,7 +43,6 @@ public class TitleCardFader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (fading == true)
         {
             StartFadingIn();

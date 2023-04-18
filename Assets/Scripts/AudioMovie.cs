@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+    - This script is used in the audio movies
+    - When the audio clip has ended, the next scene will be loaded
+    - However, if the current active scene is the Credits movie (final scene),
+      the game will start from scene 0 (the title sequence)
+*/
 public class AudioMovie : MonoBehaviour
 {
 

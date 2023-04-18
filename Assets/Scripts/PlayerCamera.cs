@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 
+    - This script is used in Camera (Stage 1)
+    - It is defined to follow the player in certain distance
+    - The position of the camera gets updated along with the player's position
+*/
 public class PlayerCamera : MonoBehaviour
 {
     public GameObject player;
