@@ -58,6 +58,7 @@ public class Respawn : MonoBehaviour
         {
             if (!enemy.activeSelf) {
                 enemy.SetActive(true);
+                enemy.GetComponent<MeshRenderer>().enabled = true;
             }
         }
     }

@@ -138,6 +138,21 @@ public class FightStop : MonoBehaviour
         else 
         {
             soundWeaponSelector.GetComponent<SoundFight>().CommenceSoundFight(isOnFightStop);
+            StartCoroutine(RestoreOldFightStop());
+        }
+    }
+
+    // This restores the FightStop after the player has moved forward
+    // (If the player will come back to this FightStop, the fight can begin again)
+    IEnumerator RestoreOldFightStop()
+    {
+        yield return new WaitForSeconds(10);
+        this.defeatedEnemies = 0;
+        allDefeated = false;
+
+        foreach(GameObject enemy in enemies)
+        {
+            enemy.GetComponent<EnemyManager>().hasTakenShot = false;
         }
     }
 }

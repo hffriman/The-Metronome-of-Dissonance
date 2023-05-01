@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             //         (the character will be automatically moved in the assigned direction)
             if (isOnCrossroads) {
                 
-                if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) {
+                if (notMoving && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))) {
 
                     foreach (AudioSource audioSource in audioSources)
                     {
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
                     metronome.GetComponent<AudioSource>().mute = false; 
                 }
-                else if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl)) {
+                else if (!notMoving || Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.RightControl)) {
                     
                     foreach (AudioSource audioSource in audioSources)
                     {

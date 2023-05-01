@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
     private int randomizedNumber;
 
     // Checks if the enemy is still alive (not destroyed)
-    private bool hasTakenShot;
+    public bool hasTakenShot;
 
 
 
@@ -100,28 +100,31 @@ public class EnemyManager : MonoBehaviour
     */ 
     IEnumerator StartEnemyAttack(Collider playerCollider)
     {
-        while (playerCollider.gameObject.GetComponent<HealthManager>().currentHealth > 0.0f && playerInSight == true)
+        if (playerInSight == true)
         {
-            this.randomizedNumber = Random.Range(0, 3);
-            
-            this.currentEnemyIdleSound = enemyIdleSounds[randomizedNumber];
-
-            yield return new WaitForSeconds(waitSeconds);
-
-            GetComponent<AudioSource>().PlayOneShot(currentEnemyIdleSound);
-
-            yield return new WaitForSeconds(idleSeconds);
-
-            GetComponent<AudioSource>().PlayOneShot(enemyAttackSound);
-
-            yield return new WaitForSeconds(0.5f);
-            
-            GetComponent<AudioSource>().Stop();
-
-            if (playerInSight == true && !hasTakenShot) 
+            while (playerCollider.gameObject.GetComponent<HealthManager>().currentHealth > 0.0f && playerInSight == true)
             {
-                playerCollider.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
-                yield return new WaitForSeconds(coolDownSeconds);
+                this.randomizedNumber = Random.Range(0, 3);
+                
+                this.currentEnemyIdleSound = enemyIdleSounds[randomizedNumber];
+
+                yield return new WaitForSeconds(waitSeconds);
+
+                GetComponent<AudioSource>().PlayOneShot(currentEnemyIdleSound);
+
+                yield return new WaitForSeconds(idleSeconds);
+
+                GetComponent<AudioSource>().PlayOneShot(enemyAttackSound);
+
+                yield return new WaitForSeconds(0.5f);
+                
+                GetComponent<AudioSource>().Stop();
+
+                if (playerInSight == true && !hasTakenShot) 
+                {
+                    playerCollider.gameObject.GetComponent<HealthManager>().TakeDamage(damage);
+                    yield return new WaitForSeconds(coolDownSeconds);
+                }
             }
         }
     }
@@ -131,9 +134,6 @@ public class EnemyManager : MonoBehaviour
     {
         // Enemy's status is changed (has taken shot from the player)
         hasTakenShot = true;
-
-        // Enemy's wait seconds will increase to 100 (just to avoid misfunctions)
-        this.waitSeconds = 100;
 
         // The enemy's disappearance will start
         StartCoroutine(CompleteEnemyDisappearance());
@@ -153,7 +153,7 @@ public class EnemyManager : MonoBehaviour
 
         // After the length of the enemy's destruction sound clip,
         // the enemy will be deactivated
-        yield return new WaitForSeconds(enemyDestroySound.length);
+        yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }
 }

@@ -262,6 +262,7 @@ public class PauseControl : MonoBehaviour
             // and all the Pause Menu's sections (and canvas itself) will be disabled
             Time.timeScale = 1;
             AudioListener.pause = false;
+            currentSelectedButton.GetComponent<ButtonSound>().Reset();
             pauseMenuCollective.GetComponent<Canvas>().enabled = false;
             pauseMenu.SetActive(false);
             areYouSureMenu.SetActive(false);
@@ -287,6 +288,7 @@ public class PauseControl : MonoBehaviour
     */
     public void OpenOptions()
     {
+        currentSelectedButton.GetComponent<ButtonSound>().Reset();
         pauseMenu.SetActive(false);
         areYouSureMenu.SetActive(false);
         optionsMenu.SetActive(true);
@@ -308,6 +310,7 @@ public class PauseControl : MonoBehaviour
     */
      public void ExitOptionsMenu()
     {
+        currentSelectedButton.GetComponent<ButtonSound>().Reset();
         areYouSureMenu.SetActive(false);
         optionsMenu.SetActive(false);
         pauseMenu.SetActive(true);
@@ -334,6 +337,7 @@ public class PauseControl : MonoBehaviour
     */
     public void ReturnToMenuConfirmation()
     {
+        currentSelectedButton.GetComponent<ButtonSound>().Reset();
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(false);
         areYouSureMenu.SetActive(true);
@@ -353,7 +357,8 @@ public class PauseControl : MonoBehaviour
         - Also, the Pause Menu's index is set to 0, and the current button is defined by it
     */
     public void CancelReturnToMenu()
-    {
+    {   
+        currentSelectedButton.GetComponent<ButtonSound>().Reset();
         areYouSureMenu.SetActive(false);
         optionsMenu.SetActive(false);
         pauseMenu.SetActive(true);

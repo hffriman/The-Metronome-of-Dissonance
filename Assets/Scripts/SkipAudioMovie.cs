@@ -18,7 +18,14 @@ public class SkipAudioMovie : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (SceneManager.GetActiveScene().name != "Credits")
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 }

@@ -40,17 +40,22 @@ public class MainMenuController : MonoBehaviour
     // This stores the index of the buttons that appear when "Quit Game" is selected (QuitConfirm, Yes, No)
     private int quitMenuIndex = 0;
 
+    // This makes the input navigation in Menu possible: is deactivated when the player has pressed "Start Demo" button
+    private bool menuActive = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
         // When the Main Menu starts, the blackscreen fades away by this function
         MenuFadeIn();
+        menuActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         // The mouse will be locked and hidden: only W/S keys or Up/Down keys are used
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked; 
@@ -63,7 +68,7 @@ public class MainMenuController : MonoBehaviour
               is resetted, meaning that it stops its audio source whenever
               the player continues navigating.
         */
-        if (mainMenu.activeSelf)
+        if (mainMenu.activeSelf && menuActive == true)
         {
             if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -212,6 +217,7 @@ public class MainMenuController : MonoBehaviour
     // After some seconds, the new scene is loaded
     IEnumerator PrepareForStart()
     {
+        menuActive = false;
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -224,6 +230,7 @@ public class MainMenuController : MonoBehaviour
     */
     public void OpenOptions()
     {
+        currentSelectedButton.GetComponent<ButtonSound>().Reset();
         mainMenu.SetActive(false);
         quitMenu.SetActive(false);
         optionsMenu.SetActive(true);
@@ -233,11 +240,7 @@ public class MainMenuController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(optionsMenuButtons[optionsMenuIndex]);
         currentSelectedButton = optionsMenuButtons[optionsMenuIndex];
-
-        currentSelectedButton.GetComponent<ButtonSound>().Reset();
         currentSelectedButton.GetComponent<ButtonSound>().ActivateSound();
-
-
     }
 
     // This plays the credits audio whenever Credits button is pressed
@@ -255,6 +258,7 @@ public class MainMenuController : MonoBehaviour
     */
     public void ConfirmGameQuit()
     {
+        currentSelectedButton.GetComponent<ButtonSound>().Reset();
         mainMenu.SetActive(false);
         optionsMenu.SetActive(false);
         quitMenu.SetActive(true);
@@ -282,6 +286,7 @@ public class MainMenuController : MonoBehaviour
     */
     public void GoBackToMainMenu()
     {
+        currentSelectedButton.GetComponent<ButtonSound>().Reset();
         quitMenu.SetActive(false);
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
@@ -290,9 +295,12 @@ public class MainMenuController : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(mainMenuButtons[mainMenuIndex]);
-        currentSelectedButton = mainMenuButtons[mainMenuIndex];
+        
+        currentSelectedButton.GetComponent<ButtonSound>().Reset();
 
         currentSelectedButton = mainMenuButtons[mainMenuIndex];
+        currentSelectedButton = mainMenuButtons[mainMenuIndex];
+
         currentSelectedButton.GetComponent<ButtonSound>().Reset();
         currentSelectedButton.GetComponent<ButtonSound>().ActivateSound();
 

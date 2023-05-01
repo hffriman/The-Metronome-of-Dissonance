@@ -23,7 +23,7 @@ public class ButtonSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -31,10 +31,10 @@ public class ButtonSound : MonoBehaviour
     // (the counter is incremented afterwards so that it won't be activated constantly)
     public void ActivateSound()
     {
-        if (counter == 0)
+        if (this.counter == 0)
         {
             this.GetComponent<AudioSource>().Play(0);
-            counter++;
+            this.counter++;
         }
     }
 
@@ -42,7 +42,7 @@ public class ButtonSound : MonoBehaviour
     // thus making it possible to be activated again
     public void Reset()
     {
-        GetComponent<AudioSource>().Stop();
-        counter = 0;
+        this.GetComponent<AudioSource>().Stop();
+        this.counter = 0;
     }
 }
