@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 // can skip some audio movies (tutorials and credits) by pressing the Enter key
 public class SkipAudioMovie : MonoBehaviour
 {
+    private float seconds = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,9 @@ public class SkipAudioMovie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        seconds += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Return) && seconds > 5.0f)
         {
             if (SceneManager.GetActiveScene().name != "Credits")
             {
@@ -24,7 +28,7 @@ public class SkipAudioMovie : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
         }
     }

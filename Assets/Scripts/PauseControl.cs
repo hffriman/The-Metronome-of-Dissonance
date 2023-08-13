@@ -265,6 +265,7 @@ public class PauseControl : MonoBehaviour
             currentSelectedButton.GetComponent<ButtonSound>().Reset();
             pauseMenuCollective.GetComponent<Canvas>().enabled = false;
             pauseMenu.SetActive(false);
+            optionsMenu.SetActive(false);
             areYouSureMenu.SetActive(false);
 
             foreach (AudioSource audioSource in audioSources)
