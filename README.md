@@ -9,7 +9,7 @@
 <p>I created this audio game prototype as a part of my thesis, in which I investigated the evolution of accessibility in video games.</p>
 <p>The game was made with Unity, and it was inspired by both my own personal tastes and some of the highly acclaimed audio-based video games.</p>
 <p>I made the game audio-only (by hiding the visual elements) in order to put every player in the same position.</p>
-<p>The game contains audio instruction (made with Narakeet voice generator), as well as distinctive sound effects that resemble different aspects of the game.</p>
+<p>This game contains a pre-recorded screen reader (made with the Narakeet voice generator), as well as distinctive sound effects that resemble different aspects of the game.</p>
 
 <b>NOTE: SINCE THIS GAME IS AUDIO-ONLY, ALL OF THE VISUALS SHOWN IN THE SCREENSHOTS BELOW ARE HIDDEN IN THE ACTUAL GAME!</b>
 
