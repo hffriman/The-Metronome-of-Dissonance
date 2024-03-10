@@ -1,17 +1,20 @@
-<h1>Metronome of Dissonance: The Action-Adventure Audio-Only Video Game for the Visually Impaired Players</h1>
+<h1>The Metronome of Dissonance: The Action-Adventure Audio Game for the Visually Impaired Players</h1>
+  <div align="center">
+    <img src="./Metronome-of-Dissonance-cover-art.png" alt="Screenshot of the Game's Cover Art: a weird-looking metronome in the darkness" width="40%" height="40%"> <br>
+  </div>
 <h2>Download the game for free from Itch.io:</h2> 
 <p>https://henrysfriman.itch.io/the-metronome-of-dissonance-demo</p>
 
 <h2>Introduction</h2>
-<p>I created this audio game prototype as a part of my thesis, in which I investigated the evolution of accessibility in video games</p>
-<p>The game was made with Unity, and it was inspired by both my own personal tastes and some of the highly acclaimed audio-based video games</p>
+<p>I created this audio game prototype as a part of my thesis, in which I investigated the evolution of accessibility in video games.</p>
+<p>The game was made with Unity, and it was inspired by both my own personal tastes and some of the highly acclaimed audio-based video games.</p>
 <p>I made the game audio-only (by hiding the visual elements) in order to put every player in the same position.</p>
 <p>The game contains audio instruction (made with Narakeet voice generator), as well as distinctive sound effects that resemble different aspects of the game.</p>
 
-<b>NOTE: SINCE THIS GAME IS AUDIO-ONLY, ALL OF THE VISUALS SHOWN IN THE SCREENSHOTS BELOW ARE HIDDEN IN THE ACTUAL GAME</b>
+<b>NOTE: SINCE THIS GAME IS AUDIO-ONLY, ALL OF THE VISUALS SHOWN IN THE SCREENSHOTS BELOW ARE HIDDEN IN THE ACTUAL GAME!</b>
 
 <h2>Game Logic</h2>
-<p>In this game, you play as an entity who is stuck in a world with no physical shape. Your main goal is to recognize the distant ticking of a metronome, and move to the right direction in order to find it. The game consists of two different stages, which are referred to as a Labyrinth and an Orbital</p>
+<p>In this game, you play as an entity who is stuck in a world with no physical shape. Your main goal is to recognize the distant ticking of a metronome, and move to the right direction in order to find it. The game consists of two different stages: the Labyrinth and the Orbital</p>
 
 <h3>Stage 1: Labyrinth</h3>
 <p>In this stage, the game logic is the following:</p>
@@ -26,7 +29,7 @@
       <li>Press either 1, 2, or 3 button to select one of the three high-pitched sound effects that resemble the sound effects of enemies, and then press either Left, Up, or Right Arrow in order to "shoot that sound" towards the enemy</li>
       <li>If you shot the correct sound effect towards the enemy, they will be destroyed. But be careful: the enemies will attack you if you are not quick enough</li>
       <li>When the enemies are destroyed, the player keeps moving automatically until they encounter new enemies or another crossroads</li>
-      <li>If you take enough damage, however, you will respawn to the previous crossroads.
+      <li>If you take enough damage, however, you will respawn to the previous crossroads
     </ul> <br>
       <div align="center">
         <img src="./kuva-230423-3.png" alt="Another screenshot for the Stage 1: the red capsule (representing the player) is standing around three blue orbs, which represent the enemies" width="70%" height="70%"> <br>
@@ -34,8 +37,8 @@
     </li>
   <li>When encountering so-called Shadow Traps, the following things happen:
     <ul>
-      <li>You will hear a low buzz sound. Press Space immediately in order to survive the trap.</li>
-      <li>If you are not quick enough, you will be destroyed by the trap and respawn to the previous crossroads.
+      <li>You will hear a low buzz sound. Press Space immediately in order to survive the trap</li>
+      <li>If you are not quick enough, you will be destroyed by the trap and respawn to the previous crossroads
     </ul> <br>
     <div align="center">
       <img src="./kuva-230423-6.png" alt="Another screenshot for the Stage 1: the red capsule (representing the player) is standing in the turquise box, which represents the trigger of the Shadow Trap" width="70%" height="70%"> <br>
@@ -48,8 +51,8 @@
   </li>
 </ul>
 <br>
-  <b>The closer you are to the metronome, the louder you can hear it. Find the metronome in order to get to the stage 2</b>
-<br>
+  <b>FIND THE METRONOME IN ORDER TO CONTINUE TO THE STAGE 2!</b>
+<br> <br>
   <div align="center">
         <img src="./kuva-230423-8.png" alt="Another screenshot for the Stage 1: the red capsule (representing the player) has found the metronome, which is represented by a pink cube" width="70%" height="70%">
   </div>
@@ -87,8 +90,9 @@
   </ul>
 <br>
   <b>
-    Reach the center of the orbital and get the metronome before the time runs out
+    REACH THE CENTER OF THE ORBITAL AND GET THE METRONOME BEFORE THE TIME RUNS OUT!
   </b>
+<br> <br>
 <div align="center">
         <img src="./kuva-230423-12.png" alt="Another screenshot for the Stage 2: the red capsule (representing the player) has now reached the center of the stage and thus found the metronome, which is represented as a pink cube" width="70%" height="70%"> 
 </div>
