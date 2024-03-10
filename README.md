@@ -19,10 +19,12 @@
 <h3>Stage 1: Labyrinth</h3>
 <p>In this stage, the game logic is the following:</p>
 <ul>
-  <li>When you are at the crossroads, you can listen to the metronome. Recognize the direction of that sound and press either Left, Up, Down, or Right Arrow. You will move (and turn) automatically based on the button you pressed.</li> <br>
+  <li>When you are at the crossroads, you can listen to the metronome. Recognize the direction of that sound and press either Left, Up, Down, or Right Arrow. You will move (and turn) automatically based on the button you pressed.</li> 
+  <br>
   <div align="center">
-    <img src="./kuva-230423-1.png" alt="Screenshot for the Stage 1: the red capsule (representing the player) is standing in a crossroads that has three yellow arrows pointing to the left, right and forward" width="70%" height="70%"> <br>
+    <img src="./kuva-230423-1.png" alt="Screenshot for the Stage 1: the red capsule (representing the player) is standing in a crossroads that has three yellow arrows pointing to the left, right and forward" width="70%" height="70%">
   </div>
+  <br>
   <li>When encountering enemies, you will stop moving: in this fight sequence, you have to do the following:
     <ul>
       <li>You have to listen to the enemies around you (in your left, right and in front of you). Each of them can have up to 3 different sound effects (low-pitched)</li>
@@ -32,21 +34,24 @@
       <li>If you take enough damage, however, you will respawn to the previous crossroads
     </ul> <br>
       <div align="center">
-        <img src="./kuva-230423-3.png" alt="Another screenshot for the Stage 1: the red capsule (representing the player) is standing around three blue orbs, which represent the enemies" width="70%" height="70%"> <br>
+        <img src="./kuva-230423-3.png" alt="Another screenshot for the Stage 1: the red capsule (representing the player) is standing around three blue orbs, which represent the enemies" width="70%" height="70%">
       </div>
     </li>
+  <br>
   <li>When encountering so-called Shadow Traps, the following things happen:
     <ul>
       <li>You will hear a low buzz sound. Press Space immediately in order to survive the trap</li>
       <li>If you are not quick enough, you will be destroyed by the trap and respawn to the previous crossroads
     </ul> <br>
     <div align="center">
-      <img src="./kuva-230423-6.png" alt="Another screenshot for the Stage 1: the red capsule (representing the player) is standing in the turquise box, which represents the trigger of the Shadow Trap" width="70%" height="70%"> <br>
+      <img src="./kuva-230423-6.png" alt="Another screenshot for the Stage 1: the red capsule (representing the player) is standing in the turquise box, which represents the trigger of the Shadow Trap" width="70%" height="70%">
+    </div>
   </li>
+  <br>
   <li>Other dangers include:
     <ul>
       <li>Dead Ends, also known as Void Zones. There is nothing you can do when encountering them, and you will respawn back to the previous crossroads</li>
-      <li>Time Limit: if you will not find the metronome in five minutes, the game will end</li>
+      <li>Time Limit of 7 minutes: if you will not find the metronome in time, the game will end</li>
     </ul>
   </li>
 </ul>
@@ -86,7 +91,7 @@
         <img src="./kuva-230423-10.png" alt="Another screenshot for the Stage 2: the red capsule (representing the player) has been trapped inside two white cubes that represent cell cages. The player is now at the center of the cage, which is also represented as a white cube" width="70%" height="70%">  
       </div> <br>
     </ul>
-    <li>There is also a time limit as in the Stage 1.</li>
+    <li>There is also a time limit of 3 minutes: if you will not reach the metronome in time, the game will end.</li>
   </ul>
 <br>
   <b>
